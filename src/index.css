@@ -1,0 +1,45 @@
+/* * 1. Reset dasar agar #root memenuhi seluruh layar.
+ * Ini adalah "SOLUSI" untuk masalah Anda.
+*/
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Kebiasaan baik */
+}
+
+/* * 2. Tambahkan CSS custom kita untuk Sidebar/Layout
+ * (Kode ini dari jawaban sebelumnya, kita gabung di sini)
+*/
+.sidebar {
+  width: 250px;
+  background-color: #f8f9fa;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+.sidebar .nav-link {
+  color: #333;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}
+.sidebar .nav-link.active {
+  background-color: #0d6efd;
+  color: white;
+}
+.sidebar .nav-link:hover:not(.active) {
+  background-color: #e9ecef;
+}
+
+.main-content {
+  margin-left: 250px; /* Lebar yang sama dengan .sidebar */
+  padding: 2rem;
+  width: calc(100% - 250px);
+}
