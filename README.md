@@ -43,6 +43,16 @@ Frontend aplikasi Warehouse Management System (WMS) dibangun menggunakan React (
     ```
     Aplikasi frontend sekarang seharusnya berjalan (biasanya di `http://localhost:5173` atau port sejenis).
 
+    login dengan Email dan password
+
+    User :
+    1. username : admin@example.com
+       password : password
+    2. username : purchasing@example.com
+       password : password
+    3. username : warehouse@example.com
+       password : password
+
 ---
 
 ## Fitur Frontend
