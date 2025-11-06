@@ -19,38 +19,45 @@ const PREdit = () => {
   const [success, setSuccess] = useState(null);
 
 
-  useEffect(() => {
+useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
- 
-        const itemResponse = await itemService.getItems();
-        setMasterItems(itemResponse.data);
 
- 
-        const prResponse = await purchasingService.getPurchaseRequestById(id);
-        const pr = prResponse.data;
+
+        const itemParams = {
+          per_page: 9999 
+        };
         
-      
+
+        const [itemResponse, prResponse] = await Promise.all([
+          itemService.getItems(itemParams), 
+          purchasingService.getPurchaseRequestById(id)
+        ]);
+
+
+        setMasterItems(itemResponse.data.data || []);
+
+
+        const pr = prResponse.data;
         setStatus(pr.status);
         setRequiredDate(pr.required_date);
         setNotes(pr.notes || '');
-        
         setItems(pr.items.map(item => ({
-          id: item.id, 
+          id: item.id,
           item_id: item.item_id,
           quantity: item.quantity
         })));
 
       } catch (err) {
         setError('Gagal memuat data.');
+        setMasterItems([]); 
       } finally {
         setLoading(false);
       }
     };
     fetchData();
-  }, [id]);
-
+  }, [id]); 
 
   const handleItemChange = (index, field, value) => {
     const newItems = [...items];

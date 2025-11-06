@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { dashboardService } from '../services/dashboardService';
 
-import DailyMovementChart from '../components/charts/DailyMovementChart'; u
+import DailyMovementChart from '../components/charts/DailyMovementChart'; 
 
 const Dashboard = () => {
   const [stats, setStats] = useState(null);

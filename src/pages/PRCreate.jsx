@@ -23,13 +23,21 @@ const PRCreate = () => {
   const [success, setSuccess] = useState(null);
 
 
-  useEffect(() => {
-    itemService.getItems()
+ useEffect(() => {
+
+    const params = {
+      per_page: 9999, 
+
+    };
+
+    itemService.getItems(params) 
       .then(response => {
-        setMasterItems(response.data);
+    
+        setMasterItems(response.data.data || []); 
       })
       .catch(err => {
         setError('Gagal memuat data item. Pastikan API backend berjalan.');
+        setMasterItems([]); 
       });
   }, []);
 
